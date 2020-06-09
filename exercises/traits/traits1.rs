@@ -1,25 +1,27 @@
 // traits1.rs
 // Time to implement some traits!
-// 
+//
 // Your task is to implement the trait
 // `AppendBar' for the type `String'.
-// 
+//
 // The trait AppendBar has only one function,
 // which appends "Bar" to any object
 // implementing this trait.
 
-// I AM NOT DONE
 trait AppendBar {
-    fn append_bar(self) -> Self;
+    fn append_bar(&mut self) -> Self;
 }
 
 impl AppendBar for String {
     //Add your code here
-
+    fn append_bar(&mut self) -> Self {
+        self.push_str("Bar");
+        self.to_owned()
+    }
 }
 
 fn main() {
-    let s = String::from("Foo");
+    let mut s = String::from("Foo");
     let s = s.append_bar();
     println!("s: {}", s);
 }
@@ -40,5 +42,4 @@ mod tests {
             String::from("BarBar")
         );
     }
-
 }
